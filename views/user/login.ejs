@@ -1,0 +1,136 @@
+<%- include('../partials/userPartials/userHeader') -%>
+
+
+
+
+<style>
+    .field {
+    position: relative;
+}
+
+.password-input {
+    padding-right: 40px; /* Adjust the padding to leave space for the eye icon */
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right distance as needed */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+</style>
+
+
+<div class="text-center center-div d-flex align-items-center justify-content-center shadow" id="LoginPage">
+  <div class="wrapper text-center center-div align-items-center justify-content-center shadow-lg">
+      <div class="title-one">
+          Login Page
+      </div>
+ 
+      <div id="errorMessage" style="color: rgb(207, 0, 0);"></div>
+
+      <form id="loginForm">
+          <div class="field">
+              <input type="text" name="email"  required>
+              <label>Email Address</label>
+          </div>
+          <div class="field">
+              <input type="password" name="password" id="password"  required>
+              <span class="eye-icon" onclick="togglePassword('password', 'eye-icon')">
+                <i class="fas fa-eye" id="eye-icon"></i>
+            </span>
+              <label>Password</label>
+          </div>    
+          <div class="signup-link">
+            <a href="/user/forget-pass">Forget password</a>
+        </div>
+        <br>
+          <!-- <div class="field">
+              <input type="password" name="confirmPassword" id="confirmPassword" required>
+              <label>Confirm Password</label>
+          </div> -->
+          <br>
+          <div class="field">
+              <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">
+              You Don't have Account? <a href="/user/tosignup">Signup</a>
+          </div>
+          <br>
+      </form>
+  </div>
+</div>
+
+
+<!-- 
+<script>
+  function validateForm() {
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+          alert("Passwords do not match. Please check.");
+          return false;
+      }
+      return true;
+  }
+</script> -->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+
+<script>
+       function togglePassword(inputId, toggleId) {
+        var input = document.getElementById(inputId);
+        var inputType = input.getAttribute("type");
+        if (inputType === "password") {
+            input.setAttribute("type", "text");
+            document.getElementById(toggleId).classList.remove("fa-eye");
+            document.getElementById(toggleId).classList.add("fa-eye-slash");
+        } else {
+            input.setAttribute("type", "password");
+            document.getElementById(toggleId).classList.remove("fa-eye-slash");
+            document.getElementById(toggleId).classList.add("fa-eye");
+        }
+    }
+
+    $(document).ready(function () {
+  
+  document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault(); 
+
+    const email = document.querySelector("input[name='email']").value;
+    const password = document.querySelector("input[name='password']").value;
+
+   
+    const data = {
+        email: email,
+        password: password
+    };
+
+    fetch("/user/log", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("responseee", data);
+        if (data.success) {
+            window.location.href = "/user/home";
+        } else {
+            console.log("inside elsee");
+            document.getElementById("errorMessage").textContent = data.error;
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+});
+
+});
+
+</script>

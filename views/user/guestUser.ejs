@@ -1,0 +1,158 @@
+<%-include('../partials/userPartials/userCDN.ejs')-%>
+<link rel="stylesheet" href="/style.css">
+<nav class="home-pagin navbar navbar-expand-lg  position-sticky shadow-lg bg-body rounded">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="/image/BYTE (1).png" style="height: 2; width:100px;" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <!-- Centered search bar -->
+      <form class="d-flex mx-auto">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-dark" type="submit"><i class="fa-solid fa-magnifying-glass" style="color: #4f4f4f;"></i></button>
+      </form>
+      <!-- Right-aligned list items -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #545454;"></i></a>
+        </li>
+        <a href="/user/toSignup" style="color: rgb(34, 34, 34);"> <button class="btn btn-outline-dark">login</button></a>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <!-- <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div> -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/image/mac.png" class="d-block w-100" alt="...">
+    </div>
+    <!-- <div class="carousel-item">
+      <img src="/image/1`.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/image/dekstop-banner.jpg" class="d-block w-100" alt="...">
+    </div> -->
+  </div>
+  <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button> -->
+</div>
+<br><br>
+<br>
+<br>
+<h1 style="text-align:center ">NEW ARRIVALS</h1>
+<div class="container" >
+  
+  <d<div class="row row-cols-2 row-cols-md-3 g-3 justify-content-center">
+    <div class="col Newproduct">
+        <a id="special-link" href="">
+            <div class="card h-100 border-0">
+                <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <img src="/image/hero-banner-macbook-air-3.image.large_2x.jpg" class="card-img-top" style="height: 120px;" alt="image">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Product 1</h5>
+                    <p class="card-text" data-price="100">$100</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- Repeat the above block for each product -->
+    <div class="col Newproduct">
+        <a id="special-link" href="">
+            <div class="card h-100 border-0">
+                <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <img src="/image/hero-banner-macbook-air-3.image.large_2x.jpg" class="card-img-top" style="height: 120px;" alt="image">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Product 2</h5>
+                    <p class="card-text" data-price="150">$150</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- Repeat the above block for each product -->
+    <div class="col Newproduct">
+        <a id="special-link" href="">
+            <div class="card h-100 border-0">
+                <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+                    <img src="/image/hero-banner-macbook-air-3.image.large_2x.jpg" class="card-img-top" style="height: 120px;" alt="image">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title">Product 3</h5>
+                    <p class="card-text" data-price="200">$200</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- Repeat the above block for each product -->
+</div>
+
+
+</div>
+<div class="text-center pt-3">
+<a href="#"><button type="button" class="btn btn-primary btn-lg">Product View</button></a>
+</div>
+<div class="benefit">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="benefit_item">
+    <div class="benefit_icon"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i></div>
+    <div class="benefit_content">
+      <h6>free shipping</h6>
+      <p>Suffered Alteration in Some Form</p>
+    </div>
+  </div>
+</div>
+<div class="col-lg-3 benefit_col">
+  <div class="benefit_item d-flex flex-row align-items-center">
+    <div class="benefit_icon"><i class="fa-solid fa-coins" aria-hidden="true"></i></div>
+    <div class="benefit_content">
+      <h6>cash on delivery</h6>
+      <p>The Internet Tend To Repeat</p>
+    </div>
+  </div>
+</div>
+<div class="col-lg-3 benefit_col">
+  <div class="benefit_item d-flex flex-row align-items-center">
+    <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+    <div class="benefit_content">
+      <h6>7 days return</h6>
+      <p>Making it Look Like Readable</p>
+    </div>
+  </div>
+</div>
+<div class="col-lg-3 benefit_col">
+  <div class="benefit_item d-flex flex-row align-items-center">
+    <div class="benefit_icon"><i class="fa-regular fa-clock"  aria-hidden="true"></i></div>
+    <div class="benefit_content">
+      <h6>opening all week</h6>
+      <p>8AM - 09PM</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<%-include('../partials/userPartials/contentFooter')-%>

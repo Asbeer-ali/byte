@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email OTP</title>
+    <link rel="stylesheet" href="/style1.css">
+    <link rel="stylesheet" href="/otp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Style for countdown timer */
+        .countdown {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="otp-form">
+  <form class="mobile-otp" action="/user/otp" method="post">
+    <h2>Email OTP</h2>
+  
+    <div id="resendMessage"></div>
+    <div id="countdown" class="countdown"></div>
+    <span style="color:red;background-color: rgb(255, 195, 195);"></span>
+    <div class="email-otp-container">
+      <input name="input1" type="text" class="email-otp-input" pattern="\d" maxlength="1">
+      <input name="input2" type="text" class="email-otp-input" pattern="\d" maxlength="1" disabled>
+      <input name="input3" type="text" class= "email-otp-input" pattern="\d" maxlength="1" disabled>
+      <input name="input4" type="text" class="email-otp-input" pattern="\d" maxlength="1" disabled>
+      <input name="input5" type="text" class="email-otp-input" pattern="\d" maxlength="1" disabled>
+      <input name="input6" type="text" class="email-otp-input" pattern="\d" maxlength="1" disabled>
+    </div>
+    <!-- <input type="text" id="mobileVerificationCode" name="code" placeholder="Enter verification code"  style="display: none;"> -->
+    <br>
+    <button type="submit" id="verifyEmailOTP" class="btn btn-info">VERIFY</button>
+  </form>
+  <br>
+  <a href="" id="resendOTPButton">Resend OTP</a>
+</div>
+
+<script>
+  const countdownTime = 180; 
+  let countdown = countdownTime;
+
+  function updateCountdown() {
+    const minutes = Math.floor(countdown / 60);
+    const seconds = countdown % 60;
+    const countdownElement = document.getElementById("countdown");
+    countdownElement.textContent = `Time left: ${minutes} minutes ${seconds} seconds`;
+
+    if (countdown === 0) {
+      document.querySelector(".mobile-otp").classList.add("disabled");
+      document.getElementById("verifyEmailOTP").disabled = true;
+    } else {
+      countdown--;
+      setTimeout(updateCountdown, 1000);
+    }
+  }
+
+  updateCountdown();
+document.getElementById("resendOTPButton").addEventListener("click", function () {
+  fetch("/user/resend-otp", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert("OTP resent successfully!");
+      } else {
+        alert("Failed to resend OTP. Please try again later.");
+        
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("An error occurred while resending OTP.");
+    });
+});
+
+</script>
+<script src="/scripts/otp.js"></script>
+</body>
+</html>
