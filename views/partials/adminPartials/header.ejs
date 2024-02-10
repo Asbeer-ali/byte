@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styleAdmin.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="mnb navbar navbar-default navbar-fixed-top ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="ic fa fa-bars"></i>
+                </button>
+                <div style="padding: 15px 0;">
+                    <a href="#" id="msbo"><i class="ic fa fa-bars"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+   
+    <div class="msb" id="msb">
+        <!-- Sidebar -->
+<div class="msb" id="msb">
+  <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+          <div class="brand-wrapper">
+              <!-- Updated: Added the company name -->
+              <div class="brand-name-wrapper">
+                  <a class="navbar-brand" href="#">
+                      BYTE
+                  </a>
+              </div>
+          </div>
+      </div>
+      <!-- ... (Rest of the code remains unchanged) ... -->
+  </nav>
+</div>
+>
+            <div class="side-menu-container">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fa fa-puzzle-piece"></i> Add Products</a></li>
+                    <li><a href="#"><i class="fa fa-heart"></i> Products</a></li>
+                    <li><a href="#"><i class="fa fa-puzzle-piece"></i> Customers</a></li>
+                    <li><a href="#"><i class="fa fa-puzzle-piece"></i> Orders</a></li>
+                    <li><a href="#"><i class="fa fa-puzzle-piece"></i> Category Offers</a></li>
+                    <li ><a href="#"><i class="fa fa-puzzle-piece"></i> Coupons</a></li>
+                    <li ><a href="#"><i class="fa fa-puzzle-piece"></i> Banner</a></li>
+                    <li ><a href="#"><i class="fa fa-puzzle-piece"></i> Category</a></li>
+                    <li ><a href="#"><i class="fa fa-puzzle-piece"></i> Category Offers</a></li>
+                    <li><a href="#"><i class="fa fa-puzzle-piece"></i> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Content goes here -->
+
+    <!-- Script for sidebar toggle -->
+    <script>
+        $(document).ready(function () {
+            $('#msbo').click(function () {
+                $('.msb').toggleClass('open');
+            });
+        });
+    </script>
+</body>
+</html>

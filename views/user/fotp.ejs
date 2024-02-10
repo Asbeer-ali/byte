@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input {
+            width: 30px;
+            padding: 10px;
+            margin: 0 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px; /* Added margin-top to move the button down */
+        }
+
+        #timer {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>OTP Verification</h2>
+    <p>Enter the 6-digit OTP sent to your registered email address:</p>
+    
+    <form id="otpForm">
+        <input type="text" maxlength="1" id="digit1" oninput="focusNext(this)" required>
+        <input type="text" maxlength="1" id="digit2" oninput="focusNext(this)" required>
+        <input type="text" maxlength="1" id="digit3" oninput="focusNext(this)" required>
+        <input type="text" maxlength="1" id="digit4" oninput="focusNext(this)" required>
+        <input type="text" maxlength="1" id="digit5" oninput="focusNext(this)" required>
+        <input type="text" maxlength="1" id="digit6" oninput="focusNext(this)" required>
+
+        <button type="submit" id="verifyBtn">Verify OTP</button>
+    </form>
+
+    <p id="timer">Time remaining: <span id="countdown">60</span> seconds</p>
+
+    <p>Resend OTP <a href="#">here</a></p>
+</div>
+
+<script>
+    let countdownValue = 60; // Set the initial countdown value in seconds
+
+    function focusNext(currentInput) {
+        const maxLength = parseInt(currentInput.getAttribute("maxlength"));
+        const currentLength = currentInput.value.length;
+
+        if (currentLength === maxLength) {
+            const nextInput = currentInput.nextElementSibling;
+            if (nextInput) {
+                nextInput.focus();
+            }
+        }
+    }
+
+    function startCountdown() {
+        const countdownElement = document.getElementById('countdown');
+        const verifyButton = document.getElementById('verifyBtn');
+        const timerInterval = setInterval(() => {
+            countdownValue--;
+            countdownElement.textContent = countdownValue;
+
+            if (countdownValue <= 0) {
+                clearInterval(timerInterval);
+                verifyButton.disabled = true; // Disable the button or perform other actions when the timer expires
+            }
+        }, 1000);
+    }
+
+    startCountdown(); // Start the countdown when the page loads
+</script>
+
+</body>
+</html>
