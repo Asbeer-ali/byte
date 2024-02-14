@@ -12,7 +12,11 @@ const UsersSchema = new Schema({
   }],
   UserName: { type: String, required: true },
   Password: { type: String, required: true },
-  Status: { type: Boolean },
+  Status: { 
+    type: Boolean,
+    default: true
+},
+
   Mobile: { type: Number },
 });
 

@@ -6,13 +6,13 @@ const userotpController = require('../controller/otpController')
 // router.route('/user/signup')
 //     .get
 router.get('/',userController.guestUser)
-router.get('/user/toSignup', userController.home);
-router.post('/user/userSignup',userController.Signup)
-router.get('/user/sendOtp',userController.sendOtp)
-router.post('/user/otp',userController.verifyOtp)
-router.get('/user/login',userController.loginPost)
-router.post('/user/log',userController.userLogin)
-
+router.get('/toSignup', userController.home);
+router.get('/login',userController.loginPost)
+router.post('/log',userController.userLogin)
+router.post('/userSignup',userController.Signup)
+router.get('/sendOtp',userController.sendOtp)
+router.post('/otp',userController.verifyOtp)
+router.get('/home',userController.tohome)
 
 
 

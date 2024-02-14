@@ -14,7 +14,9 @@ const guestUser = (req, res) => {
 const home = (req, res) => {
   res.render("../views/user/userSignup.ejs");
 };
-
+const tohome =(req,res)=>{
+  res.render('./user/home.ejs')
+}
 //signUp
 const Signup = async (req, res) => {
   try {
@@ -32,7 +34,7 @@ const Signup = async (req, res) => {
       req.session.data = data;
       req.session.email = data.email;
       req.session.signotp = true;
-      return res.redirect("/user/sendOtp");
+      return res.redirect("/sendOtp");
     } else {
       console.log("%$$$$$$$$$");
       req.flash("err", "*User with this email Already exist");
@@ -103,17 +105,19 @@ const sendOtp = async (req, res) => {
 const verifyOtp = async (req, res) => {
   try {
     const email = req.session.email;
+    console.log(req.body,'bbbbbbbbbbbb');
     const arr = [];
     for (let i = 0; i < 6; i++) {
       arr.push(req.body[`input${i + 1}`]);
     }
+    console.log(arr,'@@@@@@@@@@@@@@@@@@@');
     const Otp = await OTP.findOne({ email: email });
 
     const newData = arr.join("");
-    console.log(newData);
+    console.log(newData,'wer');
     console.log(Otp, "1111111111");
     if (newData === Otp.otp) {
-      console.log(req.session.data, "ie.................");
+
       const data = req.session.data;
       const User = new user({
         UserName: data.userName,
@@ -125,9 +129,9 @@ const verifyOtp = async (req, res) => {
       await User.save();
       console.log("user saved");
       console.log(User, "ddddddddddddddd");
-      res.render("./user/home.ejs");
+      res.render("./home.ejs");
     } else {
-      res.render("./user/otp", { err: "invalid OTP" });
+      res.render("./user/otp.ejs", { err: "invalid OTP" });
     }
   } catch (error) {
     console.error("error while verifing the otp:", error);
@@ -151,10 +155,12 @@ const userLogin = async (req, res) => {
     const check = await user.findOne({ Email: req.body.email });
     //    console.log(check,'@@@@@@@');
     if (check) {
-      const isMatch = await bcrypt.compare(req.body.password, check.password);
-
+      console.log(req.body.password);
+      console.log( check.Password);
+      const isMatch = await bcrypt.compare(req.body.password, check.Password);
+      console.log('is match is completed');
       if (isMatch) {
-        if (check.status == true) {
+        if (check.Status == true) {
           req.session.user = check.userName;
           req.session.logged = true;
           req.session.email = req.body.email;
@@ -182,4 +188,5 @@ module.exports = {
   verifyOtp,
   userLogin,
   loginPost,
+  tohome
 };

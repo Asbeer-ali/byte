@@ -6,12 +6,12 @@ const path=require('path')
 const morgan = require('morgan')
 const nocache = require('nocache');
 const flash=require('connect-flash')
-
-
+const adminrouter = require('./routes/adminRouter');
 require('dotenv').config();
 
 
-const adminrouter = require('./routes/adminRouter');
+
+
 
 const app = express();
 
@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 
 // Use the routers
 app.use('/', router);
-// app.use('/admin', adminrouter); 
+app.use('/admin', adminrouter); 
 
 
 

@@ -1,0 +1,36 @@
+<%-include('../partials/adminPartials/header.ejs') %>
+
+<div style="margin-top: 50px;"></div>
+<h1 style="text-align: center; ">Customers</h1>
+<table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% customerData.forEach((customer)=>{%>
+      <tr>
+        <th scope="row">1</th>
+        <td><%=customer.UserName%></td>
+        <td><%=customer.Email%></td>
+        <td>
+            <% if (customer.Status) { %>
+               <a href="/admin/blockUser/<%=customer._id%>"> <button type="button" class="btn btn-success">Active</button></a>
+            <% } else { %>
+                <a href="/admin/blockUser/<%=customer._id%>"><button type="button" class="btn btn-danger">Blocked</button></a>
+            <% } %>
+        </td>
+        
+      </tr>
+      <%})%>
+    </tbody>
+  </table>
+
+ 
+
+
+ <%-include('../partials/adminPartials/footer.ejs') %>

@@ -1,0 +1,15 @@
+<%-include('../partials/adminPartials/header.ejs') %>
+<div style="margin-top: 100px;">
+<h1 >Edit Category</h1>
+ 
+<form action="/admin/editCategory" method="post">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Category</label>
+      <input type="text" value="<%=categoryData._id%>" name="id" hidden>
+      <input type="text" value="<%=categoryData.categoryName%>" class="form-control" name="categoryName" >
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+ <%-include('../partials/adminPartials/footer.ejs') %>
