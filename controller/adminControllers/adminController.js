@@ -6,7 +6,7 @@ const Category=require('../../models/categorySchema')
 
 
 const adminLogin=(req,res)=>{
-    res.render('admin/adminLogin')
+    res.render('admin/adminLogin.ejs')
 }
 
 const home=(req,res)=>{

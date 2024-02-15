@@ -1,0 +1,76 @@
+<%-include('../partials/adminPartials/header.ejs') %>
+
+
+
+<div class="container w-50 border " style="margin-top: 50px;" id="form">
+    <h1>Add Products</h1>
+    <form action="/admin/addProduct" method="post" enctype="multipart/form-data" class="mt-5">
+      <div class="mb-3">
+        <label for="UrunID" class="form-label">Product Name</label>
+        <input type="text" name="productName" class="form-control" id="UrunID" aria-describedby="" required>
+      </div>
+      <div class="mb-3">
+        <label for="UrunAdi" class="form-label">Product Description</label>
+        <textarea type="text" name="description" class="form-control" id="UrunAdi" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="UrunID" class="form-label">Ram</label>
+        <input type="text" name="productRam" class="form-control" id="UrunID" aria-describedby="" required>
+      </div><div class="mb-3">
+        <label for="UrunID" class="form-label">Storage</label>
+        <input type="text" name="productStorage" class="form-control" id="UrunID" aria-describedby="" required>
+      </div>
+      <div class="mb-3">
+        <label for="UrunID" class="form-label">Proccessor</label>
+        <input type="text" name="productProccess" class="form-control" id="UrunID" aria-describedby="" required>
+      </div>
+      <div class="mb-3">
+        <label for="UrunID" class="form-label">Actual Price</label>
+        <input type="number" name="actualPrice" class="form-control" id="UrunID" aria-describedby="" required>
+      </div>
+      <div class="mb-3">
+        <label for="UrunID" class="form-label">Discount Price</label>
+        <input type="number" name="discountPrice" class="form-control" id="UrunID" aria-describedby="" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="UrunMiktar">Stock Quantity</label>
+        <input type="number" name="stock" class="form-control" id="UrunMiktar" required>
+      </div>
+      <div class="mb-3">
+          <label for="Kategori" class="form-label">Product Category</label>
+          <select name="category" id="Kategori" class="ms-1 d-block w-100" required>
+              <option></option>
+              <option value="Elektronik">Electronics</option>
+              <option value="Giyim">Fashion</option>
+              <option value="Kirtasiye">Paper Work</option>
+              <option value="Yiyecek">Food</option>
+              <option value="DijitalUrun">Digital (Code etc.)</option>
+          </select>
+      </div>
+      <div class="mb-3">
+          <label for="UrunImage" class="form-label">Product Image 1</label>
+          <input type="file" class="form-control" name="main" id="UrunImage">
+      </div>
+      <div class="mb-3">
+        <label for="UrunImage" class="form-label">Product Image 2</label>
+        <input type="file" class="form-control" name="image1" id="UrunImage">
+    </div>
+    <div class="mb-3">
+        <label for="UrunImage" class="form-label">Product Image 3</label>
+        <input type="file" class="form-control" name="image2" id="UrunImage">
+    </div>
+    <div class="mb-3">
+        <label for="UrunImage" class="form-label">Product Image 4</label>
+        <input type="file" class="form-control" name="image3" id="UrunImage">
+    </div>
+      <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-success text-white btn-outline-success form-control w-50 m-3" id="ekleButton">Add Stock</button>
+      </div>
+    </form>
+</div>
+
+ 
+
+
+ <%-include('../partials/adminPartials/footer.ejs') %>
