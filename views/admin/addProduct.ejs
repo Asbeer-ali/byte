@@ -41,11 +41,9 @@
           <label for="Kategori" class="form-label">Product Category</label>
           <select name="category" id="Kategori" class="ms-1 d-block w-100" required>
               <option></option>
-              <option value="Elektronik">Electronics</option>
-              <option value="Giyim">Fashion</option>
-              <option value="Kirtasiye">Paper Work</option>
-              <option value="Yiyecek">Food</option>
-              <option value="DijitalUrun">Digital (Code etc.)</option>
+              <% categories.forEach(category => { %>
+                <option value="<%= category._id %>"><%= category.categoryName %></option>
+            <% }); %>
           </select>
       </div>
       <div class="mb-3">

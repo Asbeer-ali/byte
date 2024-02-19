@@ -1,7 +1,9 @@
 <%-include('../partials/adminPartials/header.ejs') %>
 <div style="margin-top: 100px;">
 <h1 >Add Category</h1>
-
+<%if(error){%>
+  <p style="color: red;"><%=error%></p>
+  <%}%>
 <form action="/admin/addCategory" method="post">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Category</label>

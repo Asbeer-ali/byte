@@ -1,0 +1,40 @@
+<%-include('../partials/adminPartials/header.ejs') %>
+
+<div style="margin-top: 50px;"></div>
+<div>
+  <h1 style="text-align: center;">products</h1>    <table class="table">
+      <a href="/admin/addProduct"><button type="button" class="btn btn-outline-success">Add Product</button></a>
+    <form action="/admin/search" method="post" name="name">
+    </form>
+  </div>
+        <thead>
+            <tr style="background-color: rgb(155, 155, 155); "> 
+                <th scope="col">NO</th>
+                <th scope="col">Image</th>
+                <th scope="col">NAME</th>
+                <th scope="col">Catagory</th>
+                <th scope="col">STOCK</th>
+                <th scope="col">EDIT</th>
+                <th scope="col">DELETE</th>
+              </tr>
+        </thead>
+        <tbody>
+            <%productData.forEach((product)=>{%>
+           <tr>
+            <th scope="row"><%=i++%></th>
+            <td><img style="width: 40; height: 40px;"   src="/product-image/<%=product.Images[0]%>" alt=""></td>
+            <td><%=product.ProductName%></td>
+            <td><%=product.ProductCategory%></td>
+            <td><%=product.StockQuantity%></td>
+            <td><a href="/admin/editProduct/<%=product._id%>"><i class="fa-solid fa-pen" style="color: #000000;"></i></a></td>
+            <td><a href="/admin/deleteProduct"></a><i class="fa-solid fa-trash" style="color: #000000;"></i></a></td>
+          </tr>
+        <%})%>
+        </tbody>
+      </table>
+    
+
+</div>
+
+
+  <%-include('../partials/adminPartials/footer.ejs') %>

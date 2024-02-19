@@ -29,7 +29,7 @@ const ProductSchema = new Schema({
     type: Number,
   },
   ProductCategory: {
-    type: String,
+    type: Schema.Types.ObjectId, ref: 'category',
   },
   Images: {
     type: Array,

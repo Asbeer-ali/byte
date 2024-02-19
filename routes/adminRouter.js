@@ -7,7 +7,13 @@ const upload=require('../middleWares/productMulter')
 //     res.render('adminLogin')
 // })
 
-router.get('/', adminController.home);
+//admin login
+router.get('/',adminController.adminLogin)
+router.post('/login',adminController.loginPost)
+
+
+router.get('/home', adminController.home);
+
 
 router.get('/category',adminController.toCategory)
 router.get('/addCategory',adminController.toAddCategory)
@@ -15,6 +21,7 @@ router.post('/addCategory',adminController.addCategory)
 router.get('/editCategory/:id',adminController.editCategory)
 router.post('/editCategory',adminController.postEditCategory)
 router.get('/deleteCategory/:id',adminController.deleteCategory)
+router.get('/product',adminController.product)
 
 
 router.get('/customers',adminController.toUser)
@@ -29,4 +36,6 @@ const uploadFields = [
 router.get('/addProduct',productController.getAddProduct)
 router.post('/addProduct',upload.fields(uploadFields),productController.addProduct)
 
+router.get('/editProduct/:id',productController.getEditProduct)
+router.post('/postEdit-product/:id')
 module.exports = router;
