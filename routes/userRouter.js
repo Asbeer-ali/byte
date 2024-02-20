@@ -13,13 +13,10 @@ router.post('/userSignup',userController.Signup)
 router.get('/sendOtp',userController.sendOtp)
 router.post('/otp',userController.verifyOtp)
 router.get('/home',userController.tohome)
-
-
-
-
-
-
-
+router.get('/forget-pass',userController.forgotPassword)
+router.post('/forgotpassword',userController.forgotPost)
+router.post('/forgototp',userController.verifyForgetOtp)
+router.post('/reset_password',userController.resetPassword)
 
 
 

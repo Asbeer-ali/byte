@@ -1,5 +1,5 @@
 <%-include('../partials/adminPartials/header.ejs') %>
-<form action="/admin/postEdit-product/<%=data._id%>" method="post" class="bg-white" enctype="multipart/form-data" onsubmit="return validateForm()">
+<form action="/admin/postEdit-product/<%=data._id%>" method="post" class="bg-white" enctype="multipart/form-data">
     <main class="px-md-4 icons " style="margin-left: 18%;width: 80%; margin-top: 6%;">
 
         <div class="row d-flex justify-content-between w-75">
@@ -21,13 +21,13 @@
                 <br>
                 <div class="form-group">
                     <label for="productSpecification">Product Ram:</label>
-                    <textarea class="form-control bg-light" name="Specification1" id="productSpecification1"
+                    <textarea class="form-control bg-light" name="Ram" id="productSpecification1"
                         placeholder="Enter product Specification" required><%=data.Ram%></textarea>
                     <label for="productSpecification2">Product Storage:</label>
-                    <textarea class="form-control bg-light" name="Specification2" value="" id="productSpecification"
+                    <textarea class="form-control bg-light" name="Storage" value="" id="productSpecification"
                         placeholder="Enter product Specification" required><%=data.Storage%></textarea>
                     <label for="productSpecification3">Product Proccessor:</label>
-                    <textarea class="form-control bg-light" name="Specification3" value="" id="productSpecification"
+                    <textarea class="form-control bg-light" name="Proccessor" value="" id="productSpecification"
                         placeholder="Enter product Specification" required><%=data.Proccessor%></textarea>
                 </div>
                 <br>
@@ -76,7 +76,7 @@
                     <h2>Pricing</h2>
                     <div class="form-group">
                         <label for="basePrice">Base Price:</label>
-                        <input type="number" name="Price" class="form-control bg-light" value="<%=data.ActualPrice%>" id="basePrice" placeholder="Enter base price" required onchange="return validateBasePrice()" />
+                        <input type="number" name="ActualPrice" class="form-control bg-light" value="<%=data.ActualPrice%>" id="basePrice" placeholder="Enter base price" required onchange="return validateBasePrice()" />
                         <!-- Missing error message container for base price -->
                         <p id="basePriceError" class="text-danger"></p>
                     </div>
@@ -84,7 +84,7 @@
                     <br>
                     <div class="form-group">
                         <label for="discountAmount">Discount Amount:</label>
-                        <input type="number" name="DiscountAmount" value="<%=data.DiscountPrice%>" class="form-control bg-light" id="discountAmount" placeholder="Enter discount amount" required onsubmit="return validateDiscountAmount()" />
+                        <input type="number" name="DiscountPrice" value="<%=data.DiscountPrice%>" class="form-control bg-light" id="discountAmount" placeholder="Enter discount amount" required onsubmit="return validateDiscountAmount()" />
                         <!-- Missing error message container for discount amount -->
                         <p id="discountAmountError" class="text-danger"></p>
                     </div>
@@ -95,7 +95,7 @@
                     <h2>Stock</h2>
                     <div class="form-group">
                         <label for="quantity">Quantity:</label>
-                        <input type="number" name="AvailableQuantity" value="<%=data.StockQuantity%>"
+                        <input type="number" name="StockQuantity" value="<%=data.StockQuantity%>"
                             class="form-control bg-light" id="quantity" placeholder="Enter quantity" required onchange="return validateQuantity()"/>
                         <!-- Error message container for quantity -->
                         <p id="quantityError" class="text-danger"></p>
@@ -110,7 +110,6 @@
                         <label>Category:</label>
                         <select class="form-select bg-light" id="category" name="Category">
                             <option value="" selected disabled>
-                                <%=data.ProductCategory.categoryName%>
                             </option>
                             <% catogory.forEach((x)=>{ %>
                                 <option>

@@ -29,6 +29,10 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+//flash
+app.use(flash());
+
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

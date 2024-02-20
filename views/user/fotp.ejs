@@ -62,14 +62,17 @@
     <h2>OTP Verification</h2>
     <p>Enter the 6-digit OTP sent to your registered email address:</p>
     
-    <form id="otpForm">
-        <input type="text" maxlength="1" id="digit1" oninput="focusNext(this)" required>
-        <input type="text" maxlength="1" id="digit2" oninput="focusNext(this)" required>
-        <input type="text" maxlength="1" id="digit3" oninput="focusNext(this)" required>
-        <input type="text" maxlength="1" id="digit4" oninput="focusNext(this)" required>
-        <input type="text" maxlength="1" id="digit5" oninput="focusNext(this)" required>
-        <input type="text" maxlength="1" id="digit6" oninput="focusNext(this)" required>
+    <form id="otpForm" action="/forgototp" method="post" >
+        <input type="text" name="input1" maxlength="1" id="digit1" oninput="focusNext(this)" required>
+        <input type="text" name="input2" maxlength="1" id="digit2" oninput="focusNext(this)" required>
+        <input type="text" name="input3" maxlength="1" id="digit3" oninput="focusNext(this)" required>
+        <input type="text" name="input4" maxlength="1" id="digit4" oninput="focusNext(this)" required>
+        <input type="text" name="input5" maxlength="1" id="digit5" oninput="focusNext(this)" required>
+        <input type="text" name="input6" maxlength="1" id="digit6" oninput="focusNext(this)" required>
 
+        <% if(err){ %> 
+            <p style="color: red;"><%= err %></p>
+       <% } %> 
         <button type="submit" id="verifyBtn">Verify OTP</button>
     </form>
 
@@ -79,7 +82,7 @@
 </div>
 
 <script>
-    let countdownValue = 60; // Set the initial countdown value in seconds
+    let countdownValue = 60; 
 
     function focusNext(currentInput) {
         const maxLength = parseInt(currentInput.getAttribute("maxlength"));
@@ -102,12 +105,12 @@
 
             if (countdownValue <= 0) {
                 clearInterval(timerInterval);
-                verifyButton.disabled = true; // Disable the button or perform other actions when the timer expires
+                verifyButton.disabled = true; 
             }
         }, 1000);
     }
 
-    startCountdown(); // Start the countdown when the page loads
+    startCountdown(); 
 </script>
 
 </body>

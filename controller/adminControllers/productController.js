@@ -54,15 +54,17 @@ const EditProduct = async (req, res) => {
         let id = req.params.id;
         const productDetails = req.body;
         const files = req.files;
+        console.log(id,'@@@@@@@@@@@@@');
+        console.log(req.body);
 
-        const ProductData = await productUpload.findById(id);
+        const ProductData = await Products.findById(id);
         if (!ProductData) {
             return res.render('errorView/404admin')
         }
-
+        console.log('this editing product dataaaaaaaa',ProductData);
         const updateData = {
             ProductName: req.body.ProductName,
-            ProductDescription: req.body.ProductDescription,
+            ProductDescription: req.body.Description,
             Ram: req.body.Ram,
             Storage: req.body.Storage,
             Proccessor: req.body.Proccessor,
@@ -73,12 +75,12 @@ const EditProduct = async (req, res) => {
             BrandName: req.body.BrandName,
             images: []
         };
-
+        console.log(updateData,'updated data');
         // Handle main image
         if (files && files.main) {
             updateData.images[0] = files.main[0].filename;
         } else {
-            updateData.images[0] = ProductData.images[0];
+            updateData.images[0] = ProductData.Images[0];
         }
 
         // Handle additional images (image1, image2, image3)
@@ -88,16 +90,16 @@ const EditProduct = async (req, res) => {
                 updateData.images[i] = files[imageName][0].filename;
        
             } else {
-                updateData.images[i] = ProductData.images[i]
+                updateData.images[i] = ProductData.Images[i]
         
             }
         }
 
-        const uploaded = await productUpload.updateOne({ _id: id }, { $set: updateData });
+        const uploaded = await Products.updateOne({ _id: id }, { $set: updateData });
       
         if (uploaded) {
       
-            res.redirect('/admin/toproducts');
+            res.redirect('/admin/product');
         } else {
            
         }

@@ -9,7 +9,7 @@ require("dotenv").config();
 
 
 const adminLogin=(req,res)=>{
-    res.render('admin/adminLogin.ejs')
+    res.render('admin/adminLogin.ejs',{err:''})
 }
 
 const loginPost=(req,res)=>{
@@ -17,6 +17,8 @@ const loginPost=(req,res)=>{
         const {username,password}=req.body
         if(ADMIN_EMAIL===username&&ADMIN_PASS===password){
             res.redirect('/admin/home')
+        }else{
+            res.render('admin/adminLogin.ejs',{err:'Incorrect password'})
         }
         
     } catch (error) {
@@ -32,10 +34,13 @@ const home=(req,res)=>{
 const toCategory= async(req,res)=>{
     try {
         let categoryData= await Category.find()
+        if(!categoryData){
+            res.status(404).send('page not found')
+        }
         let i=1
         res.render('admin/categoryManagement',{categoryData,i})
     } catch (error) {
-        
+        res.status(500).render('error', { message: 'Internal Server Error' });
     }
 }
 
@@ -86,21 +91,22 @@ const postEditCategory=async(req,res)=>{
     try {
         const categoryId=req.body.id
         const category = await Category.findById(categoryId);
-        const categoryname=category.categoryName
+        const categoryname=req.body.categoryName
         categoryname.toUpperCase()
+        console.log(categoryname,'this uppercased name');
         const categoryChecking=await Category.find({categoryName:categoryname})
-
-        console.log(categoryname,'category name');
-        if(!categoryChecking){
-       if(category){
+        
+        console.log('@@@@@@@@');    
+        console.log(categoryname,categoryChecking,'category name');
+        if(categoryChecking.length==0){
+       
            category.categoryName = req.body.categoryName;
            await category.save();
            res.redirect('/admin/category')
-       } else{
-        res.render('admin/addCategory',{error:'Already Existing',categoryData:category})
-       }
-    }else{
-
+       
+}else{
+        res.render('admin/addCategory',{error:'Already Existing'})
+        throw new Error('no categories found')
     }
     } catch (error) {
         console.log(error);

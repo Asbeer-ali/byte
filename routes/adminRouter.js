@@ -37,5 +37,5 @@ router.get('/addProduct',productController.getAddProduct)
 router.post('/addProduct',upload.fields(uploadFields),productController.addProduct)
 
 router.get('/editProduct/:id',productController.getEditProduct)
-router.post('/postEdit-product/:id')
+router.post('/postEdit-product/:id',upload.fields(uploadFields),productController.EditProduct)
 module.exports = router;

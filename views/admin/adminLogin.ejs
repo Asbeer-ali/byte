@@ -44,6 +44,9 @@
     <div class="login-container">
         <h2>Admin Login</h2>
         <form action="/admin/login" method="post">
+            <% if (err) { %>
+                <p style="color: red;"><%= err %></p>
+            <% } %>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
